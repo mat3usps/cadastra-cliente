@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @Repository
 @Log4j2
@@ -25,6 +26,17 @@ public class FuncionarioInfraRepository implements FuncionarioRepository {
         }
         funcionarioRepository.put(String.valueOf(funcionario.getIdFuncionario()), funcionario);
         log.info("[finish] - FuncionarioInfraRepository - save");
+        return funcionario;
+    }
+
+    @Override
+    public Funcionario get(UUID idFuncionario) {
+        log.info("[start] - FuncionarioInfraRepository - get");
+        if (!funcionarioRepository.containsKey(String.valueOf(idFuncionario))) {
+            throw APIException.build(HttpStatus.NOT_FOUND, "Não foi possível encontrar funcionário.");
+        }
+        Funcionario funcionario = funcionarioRepository.get(String.valueOf(idFuncionario));
+        log.info("[finish] - FuncionarioInfraRepository - get");
         return funcionario;
     }
 }
