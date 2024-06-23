@@ -1,1 +1,7 @@
-spring.application.name=cadastra-cliente
+server:
+  servlet:
+    context-path: /cadastra-cliente/api
+
+springdoc:
+  swagger-ui:
+    path: /swagger
