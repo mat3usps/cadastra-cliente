@@ -9,8 +9,6 @@ import java.util.UUID;
 
 @Value
 public class FuncionarioRequest {
-    @NonNull
-    private UUID idFuncionario;
     @NotBlank
     @Size(message = "Campo nome não pode estar vazio", max = 120, min = 1)
     private String nome;
