@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @Log4j2
 @RequiredArgsConstructor
@@ -19,5 +21,13 @@ public class FuncionarioApplicationService implements FuncionarioService {
         Funcionario newFuncionario = funcionarioRepository.save(new Funcionario(funcionarioRequest));
         log.info("[finish] - FuncionarioService - createNewFuncionario");
         return FuncionarioIdResponse.builder().idFuncionario(newFuncionario.getIdFuncionario()).build();
+    }
+
+    @Override
+    public Funcionario getFuncionario(UUID idFuncionario) {
+        log.info("[start] - FuncionarioApplicationService - getFuncionario");
+        Funcionario funcionario = funcionarioRepository.get(idFuncionario);
+        log.info("[finish] - FuncionarioApplicationService - getFuncionario");
+        return funcionario;
     }
 }
