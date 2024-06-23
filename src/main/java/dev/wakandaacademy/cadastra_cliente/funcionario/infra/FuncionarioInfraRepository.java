@@ -25,7 +25,7 @@ public class FuncionarioInfraRepository implements FuncionarioRepository {
             throw APIException.build(HttpStatus.BAD_REQUEST, "Não foi possível salvar funcionário.");
         }
         funcionarioRepository.put(String.valueOf(funcionario.getIdFuncionario()), funcionario);
-        log.info("[finish] - FuncionarioInfraRepository - save" + funcionario.getIdFuncionario());
+        log.info("[finish] - FuncionarioInfraRepository - save");
         return funcionario;
     }
 
