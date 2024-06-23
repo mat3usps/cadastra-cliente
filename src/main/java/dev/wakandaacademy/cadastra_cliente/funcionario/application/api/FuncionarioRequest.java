@@ -14,6 +14,6 @@ public class FuncionarioRequest {
     private String nome;
     private String designacao;
     private double salario;
-    private int telefone;
+    private String telefone;
     private String endereco;
 }
