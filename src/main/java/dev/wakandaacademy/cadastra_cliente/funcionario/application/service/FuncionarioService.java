@@ -13,4 +13,6 @@ public interface FuncionarioService {
     Funcionario getFuncionario(UUID idFuncionario);
 
     void editFuncionario(UUID idFuncionario, EditFuncionarioRequest editFuncionarioRequest);
+
+    void deleteFuncionario(UUID idFuncionario);
 }
