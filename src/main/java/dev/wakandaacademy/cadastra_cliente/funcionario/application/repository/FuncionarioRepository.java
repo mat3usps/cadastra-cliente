@@ -8,4 +8,6 @@ public interface FuncionarioRepository {
     Funcionario save(Funcionario funcionario);
 
     Funcionario get(UUID idFuncionario);
+
+    void update(Funcionario funcionario);
 }
