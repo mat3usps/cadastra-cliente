@@ -2,10 +2,7 @@ package dev.wakandaacademy.cadastra_cliente.funcionario.application.api;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.NonNull;
 import lombok.Value;
-
-import java.util.UUID;
 
 @Value
 public class FuncionarioRequest {
