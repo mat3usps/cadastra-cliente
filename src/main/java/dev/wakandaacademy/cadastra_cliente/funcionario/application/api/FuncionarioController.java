@@ -28,4 +28,11 @@ public class FuncionarioController implements FuncionarioAPI {
         log.info("[finish] - FuncionarioController - getFuncionario");
         return new DetailedFuncionarioResponse(funcionario);
     }
+
+    @Override
+    public void editFuncionario(EditFuncionarioRequest editFuncionarioRequest) {
+        log.info("[start] - FuncionarioController - editFuncionario");
+        funcionarioService.editFuncionario(editFuncionarioRequest);
+        log.info("[finish] - FuncionarioController - editFuncionario");
+    }
 }
