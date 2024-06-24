@@ -4,6 +4,7 @@ import dev.wakandaacademy.cadastra_cliente.funcionario.application.service.Funci
 import dev.wakandaacademy.cadastra_cliente.funcionario.domain.Funcionario;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
@@ -27,5 +28,12 @@ public class FuncionarioController implements FuncionarioAPI {
         Funcionario funcionario = funcionarioService.getFuncionario(idFuncionario);
         log.info("[finish] - FuncionarioController - getFuncionario");
         return new DetailedFuncionarioResponse(funcionario);
+    }
+
+    @Override
+    public void editFuncionario(UUID idFuncionario, EditFuncionarioRequest editFuncionarioRequest) {
+        log.info("[start] - FuncionarioController - editFuncionario");
+        funcionarioService.editFuncionario(idFuncionario, editFuncionarioRequest);
+        log.info("[finish] - FuncionarioController - editFuncionario");
     }
 }

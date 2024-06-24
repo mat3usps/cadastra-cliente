@@ -32,11 +32,23 @@ public class FuncionarioInfraRepository implements FuncionarioRepository {
     @Override
     public Funcionario get(UUID idFuncionario) {
         log.info("[start] - FuncionarioInfraRepository - get");
-        if (!funcionarioRepository.containsKey(String.valueOf(idFuncionario))) {
-            throw APIException.build(HttpStatus.NOT_FOUND, "Não foi possível encontrar funcionário.");
-        }
+        checkFuncionario(idFuncionario);
         Funcionario funcionario = funcionarioRepository.get(String.valueOf(idFuncionario));
         log.info("[finish] - FuncionarioInfraRepository - get");
         return funcionario;
+    }
+
+    private void checkFuncionario(UUID idFuncionario){
+        if (!funcionarioRepository.containsKey(String.valueOf(idFuncionario))) {
+            throw APIException.build(HttpStatus.NOT_FOUND, "Não foi possível encontrar funcionário.");
+        }
+    }
+
+    @Override
+    public void update(Funcionario funcionario) {
+        log.info("[start] - FuncionarioInfraRepository - update");
+        checkFuncionario(funcionario.getIdFuncionario());
+        funcionarioRepository.put(String.valueOf(funcionario.getIdFuncionario()), funcionario);
+        log.info("[finish] - FuncionarioInfraRepository - update");
     }
 }

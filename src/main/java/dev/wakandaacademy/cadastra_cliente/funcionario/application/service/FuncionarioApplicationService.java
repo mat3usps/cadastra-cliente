@@ -1,5 +1,6 @@
 package dev.wakandaacademy.cadastra_cliente.funcionario.application.service;
 
+import dev.wakandaacademy.cadastra_cliente.funcionario.application.api.EditFuncionarioRequest;
 import dev.wakandaacademy.cadastra_cliente.funcionario.application.api.FuncionarioIdResponse;
 import dev.wakandaacademy.cadastra_cliente.funcionario.application.api.FuncionarioRequest;
 import dev.wakandaacademy.cadastra_cliente.funcionario.application.repository.FuncionarioRepository;
@@ -15,6 +16,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class FuncionarioApplicationService implements FuncionarioService {
     private final FuncionarioRepository funcionarioRepository;
+
     @Override
     public FuncionarioIdResponse createNewFuncionario(FuncionarioRequest funcionarioRequest) {
         log.info("[start] - FuncionarioService - createNewFuncionario");
@@ -29,5 +31,14 @@ public class FuncionarioApplicationService implements FuncionarioService {
         Funcionario funcionario = funcionarioRepository.get(idFuncionario);
         log.info("[finish] - FuncionarioApplicationService - getFuncionario");
         return funcionario;
+    }
+
+    @Override
+    public void editFuncionario(UUID idFuncionario, EditFuncionarioRequest editFuncionarioRequest) {
+        log.info("[start] - FuncionarioApplicationService - editFuncionario");
+        Funcionario funcionario = funcionarioRepository.get(idFuncionario);
+        funcionario.edit(editFuncionarioRequest);
+        funcionarioRepository.update(funcionario);
+        log.info("[finish] - FuncionarioApplicationService - editFuncionario");
     }
 }
