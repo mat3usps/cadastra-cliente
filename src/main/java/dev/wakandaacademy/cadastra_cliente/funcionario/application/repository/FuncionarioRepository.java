@@ -10,4 +10,6 @@ public interface FuncionarioRepository {
     Funcionario get(UUID idFuncionario);
 
     void update(Funcionario funcionario);
+
+    void delete(UUID idFuncionario);
 }

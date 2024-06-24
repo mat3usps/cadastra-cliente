@@ -51,4 +51,12 @@ public class FuncionarioInfraRepository implements FuncionarioRepository {
         funcionarioRepository.put(String.valueOf(funcionario.getIdFuncionario()), funcionario);
         log.info("[finish] - FuncionarioInfraRepository - update");
     }
+
+    @Override
+    public void delete(UUID idFuncionario) {
+        log.info("[start] - FuncionarioInfraRepository - delete");
+        checkFuncionario(idFuncionario);
+        funcionarioRepository.remove(String.valueOf(idFuncionario));
+        log.info("[finish] - FuncionarioInfraRepository - delete");
+    }
 }
