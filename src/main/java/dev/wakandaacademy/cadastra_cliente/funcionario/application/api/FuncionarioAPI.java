@@ -19,5 +19,5 @@ public interface FuncionarioAPI {
 
     @PatchMapping("/{idFuncionario}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    void editFuncionario(@RequestBody @Valid EditFuncionarioRequest editFuncionarioRequest);
+    void editFuncionario(@PathVariable UUID idFuncionario, @RequestBody @Valid EditFuncionarioRequest editFuncionarioRequest);
 }
