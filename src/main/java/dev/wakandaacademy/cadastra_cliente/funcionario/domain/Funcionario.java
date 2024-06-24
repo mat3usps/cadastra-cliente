@@ -1,5 +1,6 @@
 package dev.wakandaacademy.cadastra_cliente.funcionario.domain;
 
+import dev.wakandaacademy.cadastra_cliente.funcionario.application.api.EditFuncionarioRequest;
 import dev.wakandaacademy.cadastra_cliente.funcionario.application.api.FuncionarioRequest;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -28,5 +29,13 @@ public class Funcionario {
         this.salario = funcionarioRequest.getSalario();
         this.telefone = funcionarioRequest.getTelefone();
         this.endereco = funcionarioRequest.getEndereco();
+    }
+
+    public void edit(EditFuncionarioRequest editFuncionarioRequest){
+        this.nome = editFuncionarioRequest.getNome();
+        this.designacao = editFuncionarioRequest.getDesignacao();
+        this.salario = editFuncionarioRequest.getSalario();
+        this.telefone = editFuncionarioRequest.getTelefone();
+        this.endereco = editFuncionarioRequest.getEndereco();
     }
 }
